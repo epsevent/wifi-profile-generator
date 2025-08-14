@@ -1,0 +1,28 @@
+name: Generate Wi-Fi Profile
+
+on:
+  workflow_dispatch: # Manuel tetikleme
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Kodu Çek
+      uses: actions/checkout@v3
+
+    - name: Python Kur
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Scripti Çalıştır
+      env:
+        WIFI_SSID: ${{ secrets.WIFI_SSID }}
+        WIFI_PASS: ${{ secrets.WIFI_PASS }}
+      run: python create_wifi_profile.py
+
+    - name: Dosyayı Kaydet
+      uses: actions/upload-artifact@v3
+      with:
+        name: wifi-profile
+        path: "*.mobileconfig"
