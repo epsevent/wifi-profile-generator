@@ -22,7 +22,7 @@ jobs:
       run: python create_wifi_profile.py
 
     - name: Dosyayı Kaydet
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: wifi-profile
         path: "*.mobileconfig"
