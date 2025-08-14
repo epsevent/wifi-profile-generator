@@ -1,6 +1,5 @@
 import uuid
 import os
-from datetime import datetime
 
 # ===== AYARLAR =====
 SSID = os.getenv("WIFI_SSID", "MyWiFi")  # Actions secret'tan gelecek
@@ -60,7 +59,7 @@ template = f"""<?xml version="1.0" encoding="UTF-8"?>
 </plist>"""
 
 # ===== DOSYA KAYDET =====
-filename = f"wifi_{datetime.now().strftime('%Y%m%d_%H%M%S')}.mobileconfig"
+filename = "wifi.mobileconfig"  # Sabit dosya adı
 with open(filename, "w", encoding="utf-8") as f:
     f.write(template)
 
